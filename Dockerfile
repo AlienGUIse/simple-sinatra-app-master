@@ -8,3 +8,4 @@ ADD . /var/www/simple-sinatra-app
 
 EXPOSE 80
 CMD ["bundle", "exec", "rackup","config.ru", "-p", "80", "-o", "0.0.0.0"]
+  

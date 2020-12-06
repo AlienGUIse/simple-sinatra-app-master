@@ -3,6 +3,7 @@ steps:
     env:
       AWS_DEFAULT_REGION: us-east-1
       BUILDKITE_CLEAN_CHECKOUT: true
+      TRIGGER_ID: "${BUILDKITE_JOB_ID}"
     agents:
       queue: "agent"
     command: |-
@@ -18,10 +19,11 @@ steps:
       ENVIRONMENT: dev
       AWS_DEFAULT_REGION: us-east-1
       BUILDKITE_CLEAN_CHECKOUT: true
+      TRIGGER_ID: "${BUILDKITE_JOB_ID}"
     agents:
       queue: "agent"
     command: |-
-      ./deploy.sh
+      ./deploy/deploy.sh
 
 
 

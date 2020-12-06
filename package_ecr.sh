@@ -7,7 +7,7 @@ REPOSITORY_URL=$(echo $terraform_vars  | jq -r .ecr_url.value)
 REPOSITORY_NAME=$(echo $terraform_vars  | jq -r .ecr_name.value)
 cd ../..
 
-echo -e "--- Building Docker Image :docker: and pushing to ECR"
+echo -e "--- Building Docker Image and pushing to ECR"
 
 # Build
 docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
