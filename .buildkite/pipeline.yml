@@ -1,0 +1,27 @@
+steps: 
+  - label: ":hammer_and_wrench::package: Build and push to ECR"
+    env:
+      AWS_DEFAULT_REGION: us-east-1
+      BUILDKITE_CLEAN_CHECKOUT: true
+    agents:
+      queue: "agent"
+    command: |-
+      export BUILD_NUMBER=\$BUILDKITE_BUILD_NUMBER
+      ./package_ecr.sh
+    retry:
+      automatic: true
+
+  - block: Approval for Deployment
+
+  - label: ":docker::ecr: Create Container and Push to ECR"
+    env:
+      ENVIRONMENT: dev
+      AWS_DEFAULT_REGION: us-east-1
+      BUILDKITE_CLEAN_CHECKOUT: true
+    agents:
+      queue: "agent"
+    command: |-
+      ./deploy.sh
+
+
+
