@@ -19,7 +19,7 @@ docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
 # Publish
 docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
   ( echo "Login expired. Relogging in..." && \
-    eval $(aws ecr get-login --region ap-southeast-2) && \
+    eval $(aws ecr get-login --no-include-email --region ap-southeast-2) && \
     sudo docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} )
 
 # Pass REPOSITORY_URL to downstream buildkite steps
