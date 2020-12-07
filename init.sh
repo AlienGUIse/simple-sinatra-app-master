@@ -15,7 +15,7 @@ fi
 
 set -x ; terraform init \
     -backend-config="bucket=$state_bucket" \
-	#-backend-config="key=$key_name" \
+	-backend-config="key=$key_name" \
 	-backend-config="region=$region" \
 	-backend-config="dynamodb_table=$locktable" \
     #-backend-config="kms_key_id=$kms_arn"
