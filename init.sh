@@ -2,7 +2,7 @@
 
 key_name="simple-sinatra"
 locktable="terraformlocks"
-state_bucket="simple-sinatra-state"
+state_bucket="simple-sinatra"
 region="ap-southeast-2"
 
 if [ -f ./.terraform/terraform.tfstate ];
