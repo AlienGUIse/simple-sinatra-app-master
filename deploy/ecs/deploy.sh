@@ -2,7 +2,7 @@
 
 export TF_VAR_ECR_URL=$(buildkite-agent meta-data get "REPOSITORY_URL" --job ${TRIGGER_ID})
 
-cd cd deploy/ecs
+cd deploy/ecs
 ./init.sh
 
 #deploy ECS
