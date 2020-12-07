@@ -37,7 +37,7 @@ data "template_file" "task_definition" {
 }
 
 resource "aws_ecs_task_definition" "service_td" {
-  family                   = simple-sinatra
+  family                   = "simple-sinatra"
   container_definitions    = data.template_file.task_definition.rendered
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
