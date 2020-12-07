@@ -1,0 +1,13 @@
+[
+    {
+      "name": "simple-sinatra",
+      "image": "${REPOSITORY_URL}:${BUILD_NUMBER}",
+      "portMappings": [
+        {
+          "protocol": "tcp",
+          "containerPort": 80,
+          "hostPort": 4002
+      }
+      ]
+    }
+  ]

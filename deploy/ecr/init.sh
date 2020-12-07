@@ -1,9 +1,5 @@
 #!/bin/bash
 
-key_name="simple-sinatra"
-locktable="terraformlocks"
-state_bucket="simple-sinatra"
-region="ap-southeast-2"
 
 if [ -f ./.terraform/terraform.tfstate ];
 then
@@ -15,10 +11,6 @@ fi
 
 echo "Building ECR"
 set -x ; terraform init \
-    #-backend-config="bucket=$state_bucket" \
-	#-backend-config="key=$key_name" \
-	#-backend-config="region=$region" \
-	-backend-config="dynamodb_table=$locktable" \
     #-backend-config="kms_key_id=$kms_arn"
 set +x
 echo "Finished Terraform Init"
