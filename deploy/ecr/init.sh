@@ -10,6 +10,7 @@ else
 fi
 
 echo "Building ECR"
-set -x ; terraform init 
+set -x ; terraform init \
+    #-backend-config="kms_key_id=$kms_arn"
 set +x
 echo "Finished Terraform Init"
