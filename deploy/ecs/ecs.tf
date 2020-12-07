@@ -46,9 +46,9 @@ resource "aws_ecs_task_definition" "service_td" {
   execution_role_arn       = aws_iam_role.simple_sinatra_iam_role.arn
 }
 
-resource "aws_ecs_service" "ecs_service" {
-  name                              = simple-sinatra
-  cluster                           = simple-sinatra
+resource "aws_ecs_service" "simple-sinatra" {
+  name                              = "simple-sinatra"
+  cluster                           = "simple-sinatra"
   launch_type                       = "FARGATE"
   task_definition                   = aws_ecs_task_definition.service_td.arn
   desired_count                     = 1
