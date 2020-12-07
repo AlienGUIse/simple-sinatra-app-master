@@ -23,6 +23,12 @@ resource "aws_iam_role_policy_attachment" "ecs_task_permissions" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
+resource "aws_iam_policy_attachment" "ecs-task-permissions" {
+  name       = "ecs-task-permissions"
+  roles      = [aws_iam_role.simple_sinatra_iam_role.name]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
 
 
 #------Create task defination------
