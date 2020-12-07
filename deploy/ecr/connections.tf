@@ -5,6 +5,10 @@ terraform {
 
   backend "s3" {
     encrypt = false
+    bucket = "simple-sinatra"
+    region="ap-southeast-2"
+    key="simple-sinatra.tfstate"
+
   }
 }
 
