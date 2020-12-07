@@ -55,7 +55,7 @@ resource "aws_ecs_service" "simple-sinatra" {
 
 
   network_configuration {
-    subnets = "subnet-4844df10"
+    subnet = "subnet-4844df10"
     assign_public_ip = true
     security_groups  = [aws_security_group.simple_sinatra_sg.id]
   }
