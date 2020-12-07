@@ -20,7 +20,7 @@ sudo docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
     docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} )
 
 # Pass REPOSITORY_URL to downstream buildkite steps
-sudo buildkite-agent meta-data set "REPOSITORY_URL" "${REPOSITORY_URL}"
-sudo buildkite-agent meta-data set "REPOSITORY_NAME" "${REPOSITORY_NAME}"
+buildkite-agent meta-data set "REPOSITORY_URL" "${REPOSITORY_URL}"
+buildkite-agent meta-data set "REPOSITORY_NAME" "${REPOSITORY_NAME}"
 
 echo "Successfully pushed docker image to ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER}"
