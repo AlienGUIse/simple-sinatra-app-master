@@ -1,6 +1,6 @@
 # simple-sinatra-app-master
 This repo is a basic CI/CD automation pipeline which contains my solution to deploy this sinatra site on AWS ECS
-The ip address to test the site is 
+The ip address to test the site is 3.25.139.83
 
 Pre-requests:
 
