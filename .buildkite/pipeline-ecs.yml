@@ -1,0 +1,12 @@
+steps:
+  - label: ":rocket: Deploy to ECS"
+    env:
+      AWS_DEFAULT_REGION: ap-southeast-2
+      BUILDKITE_CLEAN_CHECKOUT: true
+    agents:
+      queue: "agent"
+    concurrency: 1
+    concurrency_group: "simple-sinatra"
+    command: |-
+      ./deploy/ecs/deploy.sh
+      

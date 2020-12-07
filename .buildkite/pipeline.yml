@@ -16,16 +16,19 @@ steps:
 
   - block: Approval for Deployment
 
-  - label: ":docker::ecr: Create Container and Push to ECR"
-    env:
-      ENVIRONMENT: dev
-      AWS_DEFAULT_REGION: us-east-1
-      BUILDKITE_CLEAN_CHECKOUT: true
-      TRIGGER_ID: "${BUILDKITE_JOB_ID}"
-    agents:
-      queue: "agent"
-    command: |-
-      ./deploy/ecs/deploy.sh
+
+  - trigger: "simple-sinatra-ecs"
+    label: ":rocket: Deploy to ECS"
+    build:
+      branch: "${BUILDKITE_BRANCH}"
+      env:
+        BUILD_NUMBER: "${BUILDKITE_BUILD_NUMBER}"
+        BUILD_CREATOR: "${BUILDKITE_BUILD_CREATOR}"
+        BUILDKITE_AGENT_NAME: "${BUILDKITE_AGENT_NAME}"
+        TRIGGER_ID: "${BUILDKITE_JOB_ID}"
+
+  - wait
+    
 
 
 
