@@ -1,7 +1,7 @@
 #!/bin/bash
 cd deploy/ecr
 ./init.sh
-terraform apply -auto-approve -var-file=config/var.tfvars
+terraform apply -auto-approve -var-file=config/terraform.tfvars
 terraform_vars=$(terraform output --json)
 REPOSITORY_URL=$(echo $terraform_vars  | jq -r .ecr_url.value)
 REPOSITORY_NAME=$(echo $terraform_vars  | jq -r .ecr_name.value)
@@ -15,7 +15,7 @@ docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
 # Publish
 docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
   ( echo "Login expired. Relogging in..." && \
-    eval $(aws ecr get-login --no-include-email --region us-east-1) && \
+    eval $(aws ecr get-login --no-include-email --region ap-southeast-2) && \
     docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} )
 
 # Pass REPOSITORY_URL to downstream buildkite steps

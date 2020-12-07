@@ -1,7 +1,7 @@
 steps: 
   - label: ":hammer_and_wrench::package: Build and push to ECR"
     env:
-      AWS_DEFAULT_REGION: us-east-1
+      AWS_DEFAULT_REGION: ap-southeast-2
       BUILDKITE_CLEAN_CHECKOUT: true
       TRIGGER_ID: "${BUILDKITE_JOB_ID}"
     agents:
