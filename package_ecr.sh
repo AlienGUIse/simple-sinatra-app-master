@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd deploy/ecr
-./init.sh
+./ecr/init.sh
 terraform apply -auto-approve
 terraform_vars=$(terraform output --json)
 REPOSITORY_URL=$(echo $terraform_vars  | jq -r .ecr_url.value)
