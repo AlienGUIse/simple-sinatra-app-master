@@ -6,15 +6,17 @@ terraform apply -auto-approve -var-file=terraform.tfvars
 terraform_vars=$(terraform output --json)
 REPOSITORY_URL=$(echo $terraform_vars  | jq -r .ecr_url.value)
 REPOSITORY_NAME=$(echo $terraform_vars  | jq -r .ecr_name.value)
+echo ""
+
 cd ../..
 
 echo -e "--- Building Docker Image and pushing to ECR"
 
 # Build
-docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
+sudo docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
 
 # Publish
-docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
+sudo docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
   ( echo "Login expired. Relogging in..." && \
     eval $(aws ecr get-login --region ap-southeast-2) && \
     sudo docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} )
