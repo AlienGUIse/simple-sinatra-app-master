@@ -1,5 +1,4 @@
 #Use s3 to store the state of the infrastructure.
-#the bucket is set in init.sh
 terraform {
   required_version = ">= 0.12"
 

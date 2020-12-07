@@ -8,7 +8,6 @@ else
     echo "No existing config"
 fi
 
-set -x ; terraform init \
-    #-backend-config="kms_key_id=$kms_arn"
+set -x ; terraform init 
 set +x
 echo "Finished Terraform Init"
