@@ -19,7 +19,7 @@ resource "aws_iam_role" "simple_sinatra_iam_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_permissions" {
-  role       = aws_iam_role.simple_sinatra_iam_role
+  role       = aws_iam_role.simple_sinatra_iam_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
