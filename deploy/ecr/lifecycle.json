@@ -11,18 +11,6 @@
         "action": {
           "type": "expire"
         }
-      },
-      {
-        "rulePriority": 40,
-        "description": "Keep latest tagged images",
-        "selection": {
-          "tagStatus": "any",
-          "countType": "imageCountMoreThan",
-          "countNumber": 20
-        },
-        "action": {
-          "type": "expire"
-        }
       }
     ]
   }
