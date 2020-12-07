@@ -2,11 +2,12 @@
 
 cd deploy/ecr
 ./init.sh
-terraform apply -auto-approve -var-file=terraform.tfvars
+terraform apply -auto-approve
 terraform_vars=$(terraform output --json)
 REPOSITORY_URL=$(echo $terraform_vars  | jq -r .ecr_url.value)
 REPOSITORY_NAME=$(echo $terraform_vars  | jq -r .ecr_name.value)
-echo ""
+echo "$REPOSITORY_URL"
+echo "$REPOSITORY_NAME"
 
 cd ../..
 
