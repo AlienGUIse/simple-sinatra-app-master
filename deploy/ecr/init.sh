@@ -13,6 +13,7 @@ else
     echo "No existing config"
 fi
 
+echo "Building ECR"
 set -x ; terraform init \
     -backend-config="bucket=$state_bucket" \
 	-backend-config="key=$key_name" \
