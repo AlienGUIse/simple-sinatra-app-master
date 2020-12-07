@@ -3,7 +3,7 @@ resource "aws_ecr_repository" "simple-sinatra" {
 }
 
 data "template_file" "lifecycle_json" {
-  template = file("config/lifecycle.json")
+  template = file("lifecycle.json")
 }
 
 resource "aws_ecr_lifecycle_policy" "ecr_delete_old_images" {
@@ -12,7 +12,7 @@ resource "aws_ecr_lifecycle_policy" "ecr_delete_old_images" {
 }
 
 data "template_file" "permissions_json" {
-  template = file("config/permissions.json")
+  template = file("permissions.json")
 }
 
 resource "aws_ecr_repository_policy" "allow_access" {
