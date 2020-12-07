@@ -11,16 +11,16 @@ cd ../..
 echo -e "--- Building Docker Image and pushing to ECR"
 
 # Build
-docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
+sudo docker build -t ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} .
 
 # Publish
-docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
+sudo docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} || \
   ( echo "Login expired. Relogging in..." && \
     eval $(aws ecr get-login --region ap-southeast-2) && \
     docker push ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER} )
 
 # Pass REPOSITORY_URL to downstream buildkite steps
-buildkite-agent meta-data set "REPOSITORY_URL" "${REPOSITORY_URL}"
-buildkite-agent meta-data set "REPOSITORY_NAME" "${REPOSITORY_NAME}"
+sudo buildkite-agent meta-data set "REPOSITORY_URL" "${REPOSITORY_URL}"
+sudo buildkite-agent meta-data set "REPOSITORY_NAME" "${REPOSITORY_NAME}"
 
 echo "Successfully pushed docker image to ${REPOSITORY_URL}:${BUILDKITE_BUILD_NUMBER}"
