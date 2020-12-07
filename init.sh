@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#initialise terraform
-
 key_name="simple-sinatra"
 locktable="terraformlocks"
 state_bucket="simple-sinatra-state"

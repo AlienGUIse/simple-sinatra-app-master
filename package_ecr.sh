@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd deploy/ecr
 ./init.sh
 terraform apply -auto-approve -var-file=config/terraform.tfvars
